@@ -1,0 +1,78 @@
+name:                fio
+version:             0.1.0.0
+synopsis:            FIO Bank API client
+description:         Implements read-only JSON API of FIO Bank
+homepage:            https://github.com/sorki/haskell-fio
+license:             BSD3
+license-file:        LICENSE
+author:              Richard Marko
+maintainer:          srk@48.io
+copyright:           2021 Richard Marko
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+
+extra-source-files:
+    CHANGELOG.md
+    LICENSE
+    README.md
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     API.Fio
+                     , API.Fio.Client
+                     , API.Fio.Types
+                     , API.Fio.Types.AccountStatement
+                     , API.Fio.Types.Payment
+                     , API.Fio.Types.Token
+                     , API.Fio.Util
+  build-depends:       base >= 4.7 && < 5
+                     , aeson
+                     , time
+                     , bytestring
+                     , text
+                     , safe-money
+                     , http-client
+                     , http-client-tls
+                     , servant
+                     , servant-client
+                     , vector
+  default-language:    Haskell2010
+  ghc-options:         -Wall -Wunused-packages
+
+flag example
+  default:
+    False
+  description:
+    Builds fio-exe demo program
+
+executable fio-exe
+   if !flag(example)
+     buildable: False
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N -Wall
+  build-depends:       base
+                     , fio
+  default-language:    Haskell2010
+
+test-suite fio-tests
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  other-modules:       ParseSpec
+                       SpecHelper
+
+  build-tool-depends:  tasty-discover:tasty-discover
+  build-depends:       base >= 4.7 && < 5
+                     , fio
+                     , time
+                     , safe-money
+                     , tasty
+                     , tasty-hspec
+  default-language:    Haskell2010
+  ghc-options:         -Wall -Wunused-packages
+
+source-repository head
+  type:     git
+  location: https://github.com/sorki/haskell-fio
