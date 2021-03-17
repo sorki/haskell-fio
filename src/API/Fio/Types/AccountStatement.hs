@@ -4,6 +4,7 @@
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE DeriveFunctor #-}
+{-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
 module API.Fio.Types.AccountStatement
@@ -18,6 +19,7 @@ module API.Fio.Types.AccountStatement
 import Data.ByteString.Lazy (ByteString)
 import Data.Text (Text)
 import Data.Time.Calendar (Day)
+import GHC.Generics (Generic)
 
 import Data.Aeson
 import Data.Maybe (isJust)
@@ -56,7 +58,7 @@ data AccountStatement a = AccountStatement
   , idTo           :: Maybe Integer -- ^ Contains transaction IDs ending with this ID
   , idLastDownload :: Maybe Integer -- ^ ID of the last downloaded transaction
   , transactions   :: [Payment a]   -- ^ List of transactions
-  } deriving (Eq, Show, Ord, Functor)
+  } deriving (Eq, Show, Ord, Functor, Generic)
 
 instance FromJSON (AccountStatement SomeDense) where
   parseJSON =  withObject "top" $ \v -> do

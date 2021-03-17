@@ -2,6 +2,7 @@
 {-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE DeriveFunctor #-}
+{-# LANGUAGE DeriveGeneric #-}
 
 module API.Fio.Types.Payment
     ( Payment(..)
@@ -9,6 +10,7 @@ module API.Fio.Types.Payment
 
 import Data.Text (Text)
 import Data.Time.Calendar (Day)
+import GHC.Generics (Generic)
 
 import Data.Aeson
 import Data.Aeson.Types
@@ -38,7 +40,7 @@ data Payment a = Payment
     , comment        :: Maybe Text     -- 25
     , bIC            :: Maybe Text     -- 26 ISO9362
     , commandID      :: Maybe Int      -- 17
-    } deriving (Eq, Show, Ord, Functor)
+    } deriving (Eq, Show, Ord, Functor, Generic)
 
 
 instance FromJSON (Payment SomeDense) where
