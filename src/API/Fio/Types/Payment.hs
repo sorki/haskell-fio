@@ -39,7 +39,7 @@ data Payment a = Payment
     , specification  :: Maybe Text     -- 18
     , comment        :: Maybe Text     -- 25
     , bIC            :: Maybe Text     -- 26 ISO9362
-    , commandID      :: Maybe Int      -- 17
+    , commandId      :: Maybe Int      -- 17
     } deriving (Eq, Show, Ord, Functor, Generic)
 
 
@@ -67,7 +67,7 @@ instance FromJSON (Payment SomeDense) where
         specification  <- parseColumn 18 v
         comment        <- parseColumn 25 v
         bIC            <- parseColumn 26 v
-        commandID      <- parseColumn 17 v
+        commandId      <- parseColumn 17 v
         return Payment{..}
       where
         parseColumn :: FromJSON a => Int -> Object -> Parser (Maybe a)
