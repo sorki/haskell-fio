@@ -24,7 +24,6 @@ data Payment a = Payment
     { remoteId       :: Int            -- 22
     , date           :: Day            -- 0 formatted as yyyy-mm-dd+nnnn
     , amount         :: a              -- 1
-    , currency       :: Text           -- 14 ISO4217
     , remoteAcctNum  :: Maybe Text     -- 2
     , remoteAcctName :: Maybe Text     -- 10
     , remoteBankNum  :: Maybe Text     -- 3
@@ -40,13 +39,14 @@ data Payment a = Payment
     , comment        :: Maybe Text     -- 25
     , bIC            :: Maybe Text     -- 26 ISO9362
     , commandId      :: Maybe Int      -- 17
+    -- field 14 is currency which is redundant (part of SomeDense/Dense)
     } deriving (Eq, Show, Ord, Functor, Generic)
 
 
 instance FromJSON (Payment SomeDense) where
     parseJSON = withObject "Payment" $ \v -> do
         -- let x = epicfail parseColumn
-        currency       <- parseColumnRequire 14 v
+        currency       <- parseColumnRequire 14 v -- ISO4217
 
         remoteId       <- parseColumnRequire 22 v
         amount'        <- parseColumnRequire 1 v :: Parser Rational
