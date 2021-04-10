@@ -2,4 +2,10 @@
 let
   src = pkgs.nix-gitignore.gitignoreSource [ ] ./.;
 in
-  pkgs.haskellPackages.callCabal2nixWithOptions "fio" src "-fexample" { }
+  pkgs.haskell.lib.buildFromSdist
+    (pkgs.haskellPackages.callCabal2nixWithOptions
+      "fio"
+      src
+      "-fexample"
+      { }
+    )
