@@ -6,9 +6,9 @@ jobs:
       - id: setup-haskell-cabal
         uses: "haskell/actions/setup@v1.2"
         with:
-          cabal-version: "${{ matrix.cabal }}"
+          cabal-version: '3.2'
           enable-stack: false
-          ghc-version: "${{ matrix.ghc }}"
+          ghc-version: '8.10.3'
       - uses: "actions/cache@v1"
         with:
           key: "${{ runner.os }}-${{ matrix.ghc }}-cabal"
@@ -23,13 +23,6 @@ jobs:
         run: cabal test all --enable-tests
       - name: haddock all
         run: cabal haddock all 
-    strategy:
-      matrix:
-        cabal:
-          - '3.2'
-        ghc:
-          - '8.10.4'
-          - '9.0.1'
 name: Haskell CI
 on:
   - push
