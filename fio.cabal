@@ -72,6 +72,7 @@ test-suite fio-tests
                      , safe-money
                      , tasty
                      , tasty-hspec
+                     , hspec
   default-language:    Haskell2010
   ghc-options:         -Wall -Wunused-packages
 
