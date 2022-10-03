@@ -28,7 +28,7 @@ library
                      , API.Fio.Types.Token
                      , API.Fio.Util
   build-depends:       base >= 4.7 && < 5
-                     , aeson
+                     , aeson >= 2 && < 3
                      , time
                      , bytestring
                      , text
@@ -72,6 +72,7 @@ test-suite fio-tests
                      , safe-money
                      , tasty
                      , tasty-hspec
+                     , hspec
   default-language:    Haskell2010
   ghc-options:         -Wall -Wunused-packages
 

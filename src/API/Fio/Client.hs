@@ -33,7 +33,6 @@ import qualified Network.HTTP.Client.TLS
 import qualified Servant.Client
 
 import API.Fio.Types
-import API.Fio.Types.Token
 
 -- type HeaderName = "x-IntervalUseToken"
 -- API returns this interval but it doesn't seem
