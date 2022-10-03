@@ -14,6 +14,7 @@ import GHC.Generics (Generic)
 
 import Data.Aeson
 import Data.Aeson.Types
+import qualified Data.Aeson.Key
 import qualified Data.Text
 
 import Money
@@ -72,7 +73,7 @@ instance FromJSON (Payment SomeDense) where
       where
         parseColumn :: FromJSON a => Int -> Object -> Parser (Maybe a)
         parseColumn num v = do
-            mOuter <- v .:? ("column" <> (Data.Text.pack . show $ num))
+            mOuter <- v .:? (Data.Aeson.Key.fromText $ "column" <> (Data.Text.pack . show $ num))
             case mOuter of
                 Nothing -> return Nothing
                 Just o  -> do
@@ -81,5 +82,5 @@ instance FromJSON (Payment SomeDense) where
 
         parseColumnRequire :: FromJSON a => Int -> Object -> Parser a
         parseColumnRequire num v = do
-            col <- v .: ("column" <> (Data.Text.pack . show $ num))
+            col <- v .: (Data.Aeson.Key.fromText $ "column" <> (Data.Text.pack . show $ num))
             col .: "value"
