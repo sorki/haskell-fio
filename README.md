@@ -1,5 +1,7 @@
 # haskell-fio
 
+# [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/sorki/haskell-fio/ci.yaml?branch=master)](https://github.com/sorki/haskell-fio/actions/workflows/ci.yaml)
+
 Fio bank API.
 
 * [API docs](https://www.fio.cz/docs/cz/API_Bankovnictvi.pdf)
