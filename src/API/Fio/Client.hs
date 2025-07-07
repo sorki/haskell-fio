@@ -158,7 +158,7 @@ runFio retries f = do
 
   r <- Servant.Client.runClientM f
     (Servant.Client.mkClientEnv manager
-      (BaseUrl Https host 443 "/ib_api/rest"))
+      (BaseUrl Https host 443 "/v1/rest"))
 
   Control.Concurrent.threadDelay 21666000
 
@@ -171,4 +171,4 @@ runFio retries f = do
     Right x -> pure x
   where
     host :: String
-    host = "www.fio.cz"
+    host = "fioapi.fio.cz"
