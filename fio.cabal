@@ -1,16 +1,16 @@
+cabal-version:       3.0
 name:                fio
 version:             0.1.0.0
 synopsis:            FIO Bank API client
 description:         Implements read-only JSON API of FIO Bank
 homepage:            https://github.com/sorki/haskell-fio
-license:             BSD3
+license:             BSD-3-Clause
 license-file:        LICENSE
 author:              Sorki
 maintainer:          srk@48.io
 copyright:           2021 Sorki
 category:            Finance
 build-type:          Simple
-cabal-version:       >=1.10
 
 extra-source-files:
     CHANGELOG.md
