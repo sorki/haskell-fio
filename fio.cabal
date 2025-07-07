@@ -1,6 +1,6 @@
 cabal-version:       3.0
 name:                fio
-version:             0.1.0.0
+version:             0.1.0.1
 synopsis:            FIO Bank API client
 description:         Implements read-only JSON API of FIO Bank
 homepage:            https://github.com/sorki/haskell-fio
