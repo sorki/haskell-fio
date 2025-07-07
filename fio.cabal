@@ -5,9 +5,9 @@ description:         Implements read-only JSON API of FIO Bank
 homepage:            https://github.com/sorki/haskell-fio
 license:             BSD3
 license-file:        LICENSE
-author:              Richard Marko
+author:              Sorki
 maintainer:          srk@48.io
-copyright:           2021 Richard Marko
+copyright:           2021 Sorki
 category:            Finance
 build-type:          Simple
 cabal-version:       >=1.10
